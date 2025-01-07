@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset ="UTF-8">
+    <meta name="viewport" content="width=device-width initial scale=1.0">
+    <title>{% block title %}BookReviews{% endblock title %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'Book/css/styles.css' %}">
+    <style>
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        body{
+            padding-bottom: 50px;
+        }
+        .card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            transition: transform 0.3s ease;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color:#ff69b4d8;;
+            color: white;
+            text-decoration: none;
+            font:bold;
+            margin-right: 10px;
+            
+            border-radius:5px ;
+        }
+        
+        .btn:hover {
+            background-color:lightpink;
+        }
+        footer {
+            background-color: pink;
+            padding: 10px 20px;  /* Add some horizontal padding for better spacing */
+            height: auto;  /* Set to auto to adjust to the content */
+            text-align: center;
+            color: white;
+            margin: 0;
+            position: fixed;  /* Make it stay at the bottom of the page */
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;  /* Ensure it stays above other content */
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .social-icon {
+            color: Blue;
+            text-decoration: none;
+            font-size: 24px;
+        }
+        
+        .social-icon:hover {
+            color: #ff69b4; /* Change this to your desired hover color */
+        }
+        .btns {
+            padding: 10px 20px;
+            background-color:#ff69b4d8;;
+            color: white;
+            text-decoration: none;
+            font:bold;
+            margin-left: 50px;
+
+            
+            border-radius:5px ;
+        }
+        /* For the container holding the genre field */
+.genre-group {
+    display: flex;
+    flex-direction: column; /* Align items in a vertical column */
+    gap: 8px; /* Space between radio buttons */
+    margin-top: 10px;
+}
+
+
+
+    </style>
+
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-link">
+        <ul>
+            <li> <a href="{% url "reviews" %} "> Home</a>  </li>
+            <li> <a href="{% url "genre" %} "> Books </a>  </li>
+            
+            
+
+        
+        </ul>
+       </div>
+        <div class="search-bar">
+            <form action="{% url 'search' %}" method="GET">
+                <input type="text" name="query" placeholder="Search books..." class="search-input">
+                <button type="submit" class="search-button">Search</button>
+            </form>
+       </div>
+
+    </nav>
+    {% block body %}
+    <div class="forms">
+    <form action=""  method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        
+    <button type="submit">Submit</button>
+    </form>
+    </div>
+    {% endblock body %}
+    <footer class="footer">
+        <a href="https://www.linkedin.com/in/samisha-yonghang-36930128b/" target="_blank" class="social-icon">
+            <i class="fab fa-linkedin"></i> Linkedin </a>
+    </footer>
+
+
+
+
+
+
+
+</body>
+
+</html>

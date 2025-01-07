@@ -1,0 +1,23 @@
+{% extends "Book/index.html" %}
+{% block title %} Update{% endblock title %}
+<style>
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+</style>
+{% block body %}
+<div class="container">
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+
+       <button type=submit>save</button>
+
+
+</div>
+{% endblock body %}

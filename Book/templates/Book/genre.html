@@ -1,0 +1,35 @@
+{%extends "Book/index.html"%}
+{% block title %}Genre{% endblock title %}
+{% block body %}Reviewed Books are here
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="card-container">
+ {% for book in books  %}
+ <div class="card">
+      <p><strong>"{{book.Title}}"-</strong>{{book.Author}}</p>
+      <p><strong>Genre:</strong>{{book.Genre}}</p>
+      <p><strong>Description:</strong>{{book.Description}}</P>
+      <p><strong>comments:</strong>{{book.Comments}}</p>
+      <a href="{% url 'update' pk=book.id %}"class="btn" >
+       Update
+      </a>
+      
+      <a href="{% url 'delete' pk=book.id %}" class="btn">
+        Delete
+      </a>
+
+ </div>  
+
+
+ 
+
+ 
+ {% endfor %}
+ 
+</div>
+
+
+
+
+
+{% endblock body %}

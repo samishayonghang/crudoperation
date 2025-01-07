@@ -1,0 +1,28 @@
+{% extends "Book/index.html" %}
+{% block title %} searchbook{% endblock title %}
+{% block body %} 
+<form action="{% url 'search' %}" method="get" >
+    {% csrf_token %}
+  <p>Result of your <strong>{{query}}</strong>:</p>
+  {% if reviews %}
+        <div class="card-container">
+            {% for review in reviews %}
+            <div class="card">
+                <p><strong> {{ review.Title }}</strong></p>
+                <p><strong>Author:</strong> {{ review.Author }}</p>
+                <p><strong>Description:</strong> {{ review.Description }}</p>
+                <p><strong>Comments:</strong> {{ review.Comments }}</p>
+                <a href ={% url "reviews" %} class="btns">Back</a>
+               
+
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+    <p>No books found matching "{{ query }}".</p>
+    <a href ={% url "reviews" %} class="btns">Back</a>
+    {% endif %}
+
+   
+   
+{% endblock body %}
