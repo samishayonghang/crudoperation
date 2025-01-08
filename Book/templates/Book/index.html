@@ -101,6 +101,10 @@
         <ul>
             <li> <a href="{% url "reviews" %} "> Home</a>  </li>
             <li> <a href="{% url "genre" %} "> Books </a>  </li>
+            <li> <a href="{% url "loginpage" %} "> Login </a>  </li>
+            <li> <a href="{% url "signup" %} "> Signup</a>  </li>
+            
+            
             
             
 
@@ -116,6 +120,7 @@
 
     </nav>
     {% block body %}
+  
     <div class="forms">
     <form action=""  method="POST" enctype="multipart/form-data">
         {% csrf_token %}
@@ -123,8 +128,14 @@
         
     <button type="submit">Submit</button>
     </form>
+    {% if request.user.is_authenticated %}
+    <a href=" {% url "logoutpage" %}">Logout </a>
+    {% endif %}
     </div>
     {% endblock body %}
+   
+   
+   
     <footer class="footer">
         <a href="https://www.linkedin.com/in/samisha-yonghang-36930128b/" target="_blank" class="social-icon">
             <i class="fab fa-linkedin"></i> Linkedin </a>

@@ -1,0 +1,16 @@
+{% extends "Book/index.html" %}
+
+{% block title %} singup{% endblock title %}
+
+{% block body %}
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{user.as_p}}
+    <button type="submit">submit</button>
+    <p>Already have account? <a href="{%url "loginpage" %}"> Login</a>
+
+</form>
+
+
+
+{% endblock body %}

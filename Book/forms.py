@@ -1,5 +1,6 @@
-from.models import Review
+from.models import Review,Authentic
 from django import forms 
+
 
 class ReviewForm(forms.ModelForm):
    class Meta:
@@ -11,3 +12,12 @@ class ReviewForm(forms.ModelForm):
           'Genre':forms.RadioSelect(attrs={'class':'genre-select'}),
 
       }
+class LoginForm(forms.ModelForm):
+   class Meta:
+      model= Authentic
+      fields=['username','password']
+
+class SignupForm(forms.ModelForm):
+   class Meta:
+      model= Authentic
+      fields=['first_name','last_name', 'username','email','password']
